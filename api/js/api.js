@@ -1,27 +1,32 @@
-var response = '';
-var test = $.get({
-    url: "http://date.jsontest.com/",
-    data: {},
-    type: "GET",
-    dataType: "json",
-    success: function(text){
-        response = JSON.parse(this.responseJSON);
-    }
-});
-//console.log(test);
-//alert(response.responseText);
 
-var test2 = $.ajax({
+function loadAllBooks() {
+    var allBooks = $.ajax({
         url: "./api/books.php", 
         data: {},
         type: "GET",
-        dataType : "json",
-        success: function( json ) {
-            console.log(json)
-        },
-        error: function( xhr, status, errorThrown ) {},
-        complete: function( xhr, status ) {}
-    });
+        dataType : "json"})
+        .done(function(json) {
+//            console.log(json[0])
+            $(json).each(function(){
+                var booksList = $("#booksList")
+                var newDiv = $('<div class="book">')
+                newDiv.html('<div class="title">'+(JSON.parse(this)).title+'</div><div class="desc hidden">'+(JSON.parse(this)).description+'</div>')
+                newDiv.appendTo(booksList)
+                
+//                console.log((JSON.parse(this)).title);
+            })
+            showDescription()
+        });
+}
+$(function(){
+    loadAllBooks()
+})
+//loadAllBooks()
 
-console.log(test2)
-document.write(test2)
+function showDescription() {
+    console.log($('.title'))
+    $('.title').on('click', function(){
+        $(this).next().toggleClass('hidden')
+    })
+}
+

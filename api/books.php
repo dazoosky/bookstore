@@ -6,18 +6,19 @@ function __autoload($classname) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if(!isset($_GET['id'])){
+    if(!(isset($_GET['id']))){
         $books = Book::loadAllFromDB($conn);
-        var_dump($books);
+//        var_dump($books);
         $booksArray = [];
         foreach ($books as $book) {
             $bookJson = json_encode($book);
             $booksArray[] = $bookJson;
         }
-        var_dump(json_encode($booksArray));
-        return json_encode($booksArray);
+        //var_dump(json_encode($booksArray));
+        echo json_encode($booksArray);
     }
     else {
         $book = Book::loadFromDB($conn, $_GET['id']);
+        echo json_encode($book);
     }
 }

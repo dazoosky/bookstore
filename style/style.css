@@ -1,0 +1,31 @@
+.book{
+/*
+    width: 500px;
+    height: 150px;
+*/
+    background-color: burlywood;
+    border-radius: 5px;
+    border: black 2px solid;
+    margin: 20px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.title {
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 25px;
+    background: #3498db;
+    padding: 10px 20px 10px 20px;
+    margin: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.desc {
+    height: 150px;
+    border-radius: 5px;
+    border: black 2px solid;
+    margin: 20px;
+}
