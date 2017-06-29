@@ -1,8 +1,11 @@
+.centered{
+    width: 600px;
+    margin: auto;
+}
+
 .book{
-/*
+    height: 300px;
     width: 500px;
-    height: 150px;
-*/
     background-color: burlywood;
     border-radius: 5px;
     border: black 2px solid;
@@ -24,8 +27,20 @@
 }
 
 .desc {
+    font-size: 110%;
     height: 150px;
     border-radius: 5px;
     border: black 2px solid;
     margin: 20px;
+}
+.deleteBtnCntr {
+    width: 200px;
+    height: 30px;
+    margin: auto;  
+}
+
+.deleteBtn {
+    width: 200px;
+    height: 30px;
+    margin: auto;
 }

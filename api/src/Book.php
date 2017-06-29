@@ -54,9 +54,10 @@ class Book implements JsonSerializable {
                 'author'=> $this->author,
                 'desc'=> $this->description]);
             if ($result !== false) {
-                $this->id = $conn->lastInsertId();
-                return true;
+                return $this->id = $conn->lastInsertId();
+//                return true;
             }
+            
         } else {
             $stmt = $conn->prepare('UPDATE books SET title = :title, author = :author, description = :desc WHERE id=:id');
             $result = $stmt->execute([ 
@@ -104,6 +105,9 @@ class Book implements JsonSerializable {
     public static function deleteFromDB(PDO $conn, $id) {
         $query = ('DELETE FROM books WHERE id = '.$id);
         $result = $conn->query($query);
+        if ($result != false) {
+            return true;
+        };
     }
     
     public function jsonSerialize() {
