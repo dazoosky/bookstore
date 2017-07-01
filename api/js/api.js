@@ -20,6 +20,8 @@ function loadAllBooks() {
             deleteButtonsFunc()
         });
 }
+
+//not used in API
 function addLastAddedBook(id) {
     var selectedBook = $.ajax({
         url: "./api/books.php?id="+id, 
@@ -35,30 +37,6 @@ function addLastAddedBook(id) {
             }
         );
 }
-
-/*
-function addDescToAll() {
-    var buttons = $('.title')
-    buttons.on('click', function(){
-        
-    })
-}
-
-function showDescription(that) {
-        var me = this //Setting scope for ajax function 
-        var id = $(that).parent().attr('id')
-        var bookDetails = $.ajax({
-            url: ("./api/books.php?id="+id),
-            type: "GET",
-            dataType: "json"
-        }).done(function(json){
-            var details = ("Author: "+json.author+"<br>Description: "+json.description)
-            $(me).next().html(details) 
-            $(me).next().toggleClass('hidden')
-        })
-    
-}
-*/
 
 function showDescription() {
     $('.title').on('click', function(){
@@ -116,6 +94,5 @@ $("#addForm").submit(function(e) {
                 alert(array[1])
             }
         });
-    ;
 });
 

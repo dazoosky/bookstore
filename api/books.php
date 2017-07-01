@@ -8,13 +8,11 @@ function __autoload($classname) {
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if(!(isset($_GET['id']))){
         $books = Book::loadAllFromDB($conn);
-//        var_dump($books);
         $booksArray = [];
         foreach ($books as $book) {
             $bookJson = json_encode($book);
             $booksArray[] = $bookJson;
         }
-        //var_dump(json_encode($booksArray));
         echo json_encode($booksArray);
     }
     else {
@@ -44,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($canBeAdd === true) {
         $result = $newBook->saveToDB($conn); 
         }
-        else {$result = false; } // Nastawienie result na false w przypadku nieudanej walidacji
+            else {$result = false; } // Nastawienie result na false w przypadku nieudanej walidacji
         if ($result !== false) {
             $array = [$result, "Added new book!"];
             echo json_encode($array); //Rzucenie komunikatu do API wraz z ID nowej pozycji
